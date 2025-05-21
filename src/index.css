@@ -83,8 +83,27 @@ body {
     animation: floating 3s ease-in-out infinite;
   }
 
-  .glow-on-hover:hover {
-    box-shadow: 0 0 15px var(--color-blood-red);
+  .glow-on-hover {
+    position: relative;
+    z-index: 1;
+  }
+
+  .glow-on-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .glow-on-hover:hover::before {
+    opacity: 1;
   }
 }
 

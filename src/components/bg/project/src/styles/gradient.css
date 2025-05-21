@@ -1,0 +1,50 @@
+/* Gradient background styles */
+.gradient-background {
+  background: linear-gradient(to bottom, #0F0F0F, #3D0000, #800020);
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, #0F0F0F, #3D0000, #800020);
+  opacity: 0;
+  animation: pulse 8s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+/* Individual gradient classes that can be used directly on elements */
+.black-red-gradient {
+  background: linear-gradient(to bottom, #0F0F0F, #3D0000, #800020);
+}
+
+/* Gradient with increased contrast for better text readability */
+.high-contrast-gradient {
+  background: linear-gradient(to bottom, #000000, #300000, #700020);
+}
+
+/* Horizontal variant */
+.horizontal-black-red-gradient {
+  background: linear-gradient(to right, #0F0F0F, #3D0000, #800020);
+}
+
+/* Diagonal variant */
+.diagonal-black-red-gradient {
+  background: linear-gradient(135deg, #0F0F0F, #3D0000, #800020);
+}

@@ -30,7 +30,7 @@ const Header: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
-          {['Home', 'Features', 'Previous', 'Pricing', 'FAQ'].map((item) => (
+          {['Home', 'Features', 'Pricing', 'FAQ'].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -83,7 +83,7 @@ const Header: React.FC = () => {
               </button>
             </div>
             <div className="flex-1 flex flex-col justify-center items-center space-y-8">
-              {['Home', 'Features', 'Previous', 'Pricing', 'FAQ'].map((item) => (
+              {['Home', 'Features', 'Pricing', 'FAQ'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}

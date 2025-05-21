@@ -22,7 +22,7 @@ const RegisterSection: React.FC = () => {
   };
 
   return (
-    <section id="register" className="section bg-charcoal relative overflow-hidden">
+    <section id="register" className="section relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-b from-blood-red/10 to-transparent opacity-50"></div>
       <div className="absolute bottom-0 right-0 w-1/3 h-full bg-gradient-to-t from-blood-red/10 to-transparent opacity-50"></div>

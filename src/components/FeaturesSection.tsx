@@ -46,7 +46,7 @@ const FeaturesSection: React.FC = () => {
   };
 
   return (
-    <section id="features" className="section bg-void-black">
+    <section id="features" className="section">
       <div className="container-custom">
         <motion.div
           className="text-center mb-16"

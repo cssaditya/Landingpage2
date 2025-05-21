@@ -3,10 +3,10 @@ import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import IntroSection from './components/IntroSection';
 import FeaturesSection from './components/FeaturesSection';
-import PreviousBoxesSection from './components/PreviousBoxesSection';
 import PricingSection from './components/PricingSection';
 import RegisterSection from './components/RegisterSection';
 import Footer from './components/Footer';
+import UnifiedBackground from './components/UnifiedBackground';
 
 function App() {
   // Helper function to create particles globally once for performance
@@ -40,17 +40,19 @@ function App() {
   }, []);
 
   return (
-    <div className="App bg-void-black text-white">
-      <Header />
-      <main>
-        <HeroSection />
-        <IntroSection />
-        <FeaturesSection />
-        <PreviousBoxesSection />
-        <PricingSection />
-        <RegisterSection />
-      </main>
-      <Footer />
+    <div className="App relative min-h-screen">
+      <UnifiedBackground />
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-1">
+          <HeroSection />
+          <IntroSection />
+          <FeaturesSection />
+          <PricingSection />
+          <RegisterSection />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }

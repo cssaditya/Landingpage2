@@ -83,7 +83,7 @@ const PricingSection: React.FC = () => {
   };
 
   return (
-    <section id="pricing" className="section bg-void-black">
+    <section id="pricing" className="section">
       <div className="container-custom">
         <motion.div
           className="text-center mb-16"

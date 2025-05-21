@@ -1,14 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import ParticleBackground from './ParticleBackground';
 import Box3DScene from './3d/Box3DScene';
 
 const HeroSection: React.FC = () => {
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-void-black">
-      <ParticleBackground particleCount={80} />
-      
+    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
       <div className="container-custom relative z-20 flex flex-col items-center mt-16">
         <motion.div
           className="text-center"
@@ -23,11 +20,9 @@ const HeroSection: React.FC = () => {
             Premium Mystery Delivered
           </h2>
         </motion.div>
-        
         <div className="relative h-72 w-full flex items-center justify-center">
           <Box3DScene />
         </div>
-        
         <motion.a
           href="#register"
           className="btn btn-primary text-lg mt-4 floating"
@@ -39,7 +34,6 @@ const HeroSection: React.FC = () => {
         >
           CLAIM YOUR BOX
         </motion.a>
-        
         <motion.div
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 scroll-indicator"
           initial={{ opacity: 0 }}
