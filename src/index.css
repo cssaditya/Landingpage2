@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -30,12 +31,12 @@ html {
 
 body {
   @apply bg-black text-white overflow-x-hidden;
-  font-family: 'Helvetica', Arial, sans-serif;
+  font-family: 'Rubik', 'Helvetica', Arial, sans-serif;
 }
 
 @layer base {
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Helvetica', Arial, sans-serif;
+    font-family: 'Rubik', 'Helvetica', Arial, sans-serif;
     @apply tracking-tight leading-tight;
   }
   
@@ -52,7 +53,7 @@ body {
   }
   
   p {
-    font-family: 'Helvetica', Arial, sans-serif;
+    font-family: 'Rubik', 'Helvetica', Arial, sans-serif;
     @apply tracking-wide leading-relaxed;
   }
 }

@@ -66,7 +66,7 @@ const ThreeDScene: React.FC = () => {
 
     // Load 3D model
     loader.load(
-      '/Mystery_box.glb',
+      '/Mystery_box1.glb',
       (gltf) => {
         const model = gltf.scene;
         

@@ -6,10 +6,9 @@ import FeaturesSection from './components/FeaturesSection';
 import PricingSection from './components/PricingSection';
 import RegisterSection from './components/RegisterSection';
 import Footer from './components/Footer';
-import UnifiedBackground from './components/UnifiedBackground';
+import MainBackground from './components/MainBackground';
 
 function App() {
-  // Helper function to create particles globally once for performance
   useEffect(() => {
     // Set the document title
     document.title = "PREMIUM MYSTERY BOX | Unlock The Unknown";
@@ -41,8 +40,9 @@ function App() {
 
   return (
     <div className="App relative min-h-screen">
-      <UnifiedBackground />
-      <div className="relative z-10 flex flex-col min-h-screen">
+      <MainBackground />
+      <div className="content-glass-matte fixed inset-0 w-full h-full z-10 pointer-events-none" />
+      <div className="relative z-20 flex flex-col min-h-screen">
         <Header />
         <main className="flex-1">
           <HeroSection />

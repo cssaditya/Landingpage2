@@ -81,11 +81,11 @@ const IntroSection: React.FC = () => {
           variants={containerVariants}
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-heading mb-6"
+            className="text-4xl md:text-5xl font-heading mb-6 contrast-outline"
             variants={itemVariants}
           >
             The <motion.span 
-              className="text-blood-red inline-block"
+              className="text-blood-red inline-block contrast-outline"
               initial={{ scale: 1 }}
               whileHover={{
                 scale: 1.1,
@@ -98,7 +98,7 @@ const IntroSection: React.FC = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-lg md:text-xl mb-8 text-white/90"
+            className="text-lg md:text-xl mb-8 text-white/90 contrast-outline"
             variants={itemVariants}
           >
             we curate a collection of premium items that remain a mystery until you open the box. Register now to get your first box! why you should Pre-register now? these are the reasons:
@@ -119,17 +119,17 @@ const IntroSection: React.FC = () => {
           >
             {[
               {
-                number: '01',
+                number: '',
                 title: 'Exclusive Items',
                 description: 'Each box contains products you won\'t find anywhere else, specially created for our Pre registered subscribers.'
               },
               {
-                number: '02',
+                number: '',
                 title: 'Premium Quality',
                 description: 'Only the finest materials and craftsmanship make it into our mystery boxes.'
               },
               {
-                number: '03',
+                number: '',
                 title: 'Guaranteed Surprise',
                 description: 'Every box contains items that you will love.'
               }
@@ -137,7 +137,6 @@ const IntroSection: React.FC = () => {
               <motion.div 
                 key={index} 
                 className="bg-black/30 p-8 rounded-lg relative overflow-hidden border border-gray-800 hover:border-blood-red/50 transition-colors"
-                variants={itemVariants}
                 whileHover="hover"
                 initial="initial"
                 variants={{
@@ -154,8 +153,8 @@ const IntroSection: React.FC = () => {
                 <span className="absolute -top-2 -left-2 text-6xl font-heading text-blood-red/20">
                   {item.number}
                 </span>
-                <h3 className="text-xl font-heading mb-4 relative z-10">{item.title}</h3>
-                <p className="text-white/80 relative z-10">{item.description}</p>
+                <h3 className="text-xl font-heading mb-4 relative z-10 contrast-outline">{item.title}</h3>
+                <p className="text-white/80 relative z-10 contrast-outline">{item.description}</p>
                 <motion.div 
                   className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-blood-red to-transparent"
                   initial={{ scaleX: 0, originX: 0 }}

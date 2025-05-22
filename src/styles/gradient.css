@@ -1,0 +1,93 @@
+/* Gradient background styles */
+.gradient-background {
+  background: linear-gradient(to bottom, #0F0F0F, #3D0000, #800020);
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, #0F0F0F, #3D0000, #800020);
+  opacity: 0;
+  animation: pulse 8s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+/* Individual gradient classes that can be used directly on elements */
+.black-red-gradient {
+  background: linear-gradient(to bottom, #0F0F0F, #3D0000, #800020);
+}
+
+/* Gradient with increased contrast for better text readability */
+.high-contrast-gradient {
+  background: linear-gradient(to bottom, #000000, #300000, #700020);
+}
+
+/* Horizontal variant */
+.horizontal-black-red-gradient {
+  background: linear-gradient(to right, #0F0F0F, #3D0000, #800020);
+}
+
+/* Diagonal variant */
+.diagonal-black-red-gradient {
+  background: linear-gradient(135deg, #0F0F0F, #3D0000, #800020);
+}
+
+.header-gradient {
+  background: #000;
+  transition: background 0.5s;
+}
+
+.glass-matte {
+  background: rgba(20, 20, 20, 0.35);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.08);
+}
+
+.content-glass-matte {
+  background: rgba(20, 20, 20, 0.38);
+  backdrop-filter: blur(28px) saturate(120%);
+  -webkit-backdrop-filter: blur(28px) saturate(120%);
+  border-radius: 1.5rem;
+  border: 1.5px solid rgba(255,255,255,0.10);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* DEMO: Blend mode for dynamic contrast */
+.blend-difference {
+  mix-blend-mode: difference;
+  color: #fff;
+}
+
+/* DEMO: Strong text outline for contrast */
+.contrast-outline {
+  color: #fff;
+  text-shadow:
+    2px 2px 8px #000,
+    -2px -2px 8px #000,
+    2px -2px 8px #000,
+    -2px 2px 8px #000;
+}
+
+/* DEMO: Placeholder for JS-dynamic coloring */
+.contrast-js {
+  transition: color 0.3s;
+} 

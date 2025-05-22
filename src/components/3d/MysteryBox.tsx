@@ -9,7 +9,7 @@ const MODEL_PATH = '/Mystery_box.glb';
 const MysteryBox = ({ scrollY = 0 }) => {
   const group = useRef<Group>(null);
   const { scene } = useGLTF(MODEL_PATH);
-
+  
   // Rotate the model based on scroll position
   useFrame(({ clock }) => {
     if (group.current) {

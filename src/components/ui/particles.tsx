@@ -1,0 +1,127 @@
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+
+interface ParticlesProps {
+  className?: string;
+  quantity?: number;
+  staticity?: number;
+  ease?: number;
+}
+
+export function Particles({
+  className = "",
+  quantity = 50,
+  staticity = 50,
+  ease = 50,
+}: ParticlesProps) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    const particles: Array<{
+      x: number;
+      y: number;
+      translateX: number;
+      translateY: number;
+      size: number;
+      alpha: number;
+      targetAlpha: number;
+      dx: number;
+      dy: number;
+    }> = [];
+
+    for (let i = 0; i < quantity; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        translateX: 0,
+        translateY: 0,
+        size: Math.random() * 2 + 1,
+        alpha: 0,
+        targetAlpha: Math.random() * 0.5 + 0.1,
+        dx: (Math.random() - 0.5) * 0.2,
+        dy: (Math.random() - 0.5) * 0.2,
+      });
+    }
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((particle) => {
+        const distance = Math.sqrt(
+          Math.pow(mouseX - particle.x, 2) + Math.pow(mouseY - particle.y, 2)
+        );
+
+        if (distance < 100) {
+          const angle = Math.atan2(mouseY - particle.y, mouseX - particle.x);
+          const force = (100 - distance) / 100;
+          particle.translateX += Math.cos(angle) * force * staticity;
+          particle.translateY += Math.sin(angle) * force * staticity;
+        }
+
+        particle.translateX += particle.dx;
+        particle.translateY += particle.dy;
+
+        particle.translateX *= ease / 100;
+        particle.translateY *= ease / 100;
+
+        particle.x += particle.translateX;
+        particle.y += particle.translateY;
+
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
+
+        particle.alpha += (particle.targetAlpha - particle.alpha) * 0.1;
+
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${particle.alpha})`;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [quantity, staticity, ease]);
+
+  return (
+    <motion.canvas
+      ref={canvasRef}
+      className={className}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    />
+  );
+} 

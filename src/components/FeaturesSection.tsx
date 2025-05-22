@@ -1,28 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RotateCcw, Star, Zap, Gift } from 'lucide-react';
+import { RotateCcw, Star, Gift, WalletCards, Gamepad2 } from 'lucide-react';
 
 const FeaturesSection: React.FC = () => {
   const features = [
     {
       icon: <Gift className="w-12 h-12" />,
-      title: "Handpicked Selection",
-      description: "Our curators scour the globe for unique, premium items that create an unboxing experience like no other."
+      title: "Merchandise",
+      description: "Premium apparel and accessories designed for true gamers."
     },
     {
       icon: <Star className="w-12 h-12" />,
-      title: "Premium Quality",
-      description: "Every item meets our strict quality standards, ensuring you receive only the best of the best."
+        title: "Collectibles",
+      description: "Limited edition figurines and rare collectibles from your favorite games."
     },
     {
-      icon: <RotateCcw className="w-12 h-12" />,
-      title: "New Theme Monthly",
-      description: "Each box follows a unique theme, keeping the surprise fresh and exciting month after month."
+      icon: <WalletCards className="w-12 h-12" />,
+      title: "Cards",
+      description: "Exclusive trading cards with digital authentication and special effects."
     },
     {
-      icon: <Zap className="w-12 h-12" />,
-      title: "Early Access",
-      description: "Subscribers get first dibs on limited edition items and special collaborations before anyone else."
+      icon: <Gamepad2 className="w-12 h-12" />,
+      title: "In-Game Perks",
+      description: "Exclusive digital content, skins, and special access codes."
     }
   ];
 
@@ -55,10 +55,10 @@ const FeaturesSection: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-heading uppercase mb-4">
-            Exceptional <span className="text-blood-red">Features</span>
+          <h2 className="text-4xl md:text-5xl font-heading uppercase mb-4 contrast-outline">
+            Exceptional <span className="text-blood-red contrast-outline">Features</span>
           </h2>
-          <p className="text-white/80 max-w-2xl mx-auto">
+          <p className="text-white/80 max-w-2xl mx-auto contrast-outline">
             What makes our mystery boxes stand out from the rest? 
             Here's why our subscribers keep coming back for more.
           </p>
@@ -74,13 +74,13 @@ const FeaturesSection: React.FC = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="bg-charcoal/50 rounded-lg p-8 flex flex-col items-center md:items-start text-center md:text-left border-l-2 border-blood-red/70 glow-on-hover"
+              className="bg-charcoal/50 rounded-lg p-8 flex flex-col items-center md:items-start text-center md:text-left border-2 border-blood-red contrast-outline"
               variants={itemVariants}
               whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
             >
-              <div className="text-blood-red mb-6">{feature.icon}</div>
+              <div className="text-blood-red mb-6 contrast-outline">{feature.icon}</div>
               <h3 className="text-2xl font-heading mb-4">{feature.title}</h3>
-              <p className="text-white/80">{feature.description}</p>
+              <p className="text-white/80 contrast-outline">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -92,14 +92,14 @@ const FeaturesSection: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <a
+          <motion.a
             href="#register"
             className="btn btn-primary"
             whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(220, 20, 60, 0.7)' }}
             whileTap={{ scale: 0.95 }}
           >
             UNLOCK YOUR MYSTERY
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </section>

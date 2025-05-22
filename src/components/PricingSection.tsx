@@ -93,7 +93,7 @@ const PricingSection: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-5xl font-heading uppercase mb-4">
-            Choose Your <span className="text-blood-red">Mystery</span>
+            Choose Your <span className="text-blood-red contrast-outline">Mystery</span>
           </h2>
           <p className="text-white/80 max-w-2xl mx-auto">
             Select the perfect mystery box subscription that fits your desires and budget.
@@ -115,13 +115,13 @@ const PricingSection: React.FC = () => {
               />
             </button>
             <span className={`ml-3 ${isAnnual ? 'text-white' : 'text-white/60'}`}>
-              Annual <span className="text-blood-red ml-1">(Save 20%)</span>
+              Annual <span className="text-blood-red ml-1 contrast-outline">(Save 20%)</span>
             </span>
           </div>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -130,7 +130,7 @@ const PricingSection: React.FC = () => {
           {plans.map((plan, index) => (
             <motion.div
               key={index}
-              className={`rounded-lg overflow-hidden ${
+              className={`rounded-lg overflow-hidden h-full flex flex-col ${
                 plan.featured 
                   ? 'border-2 border-blood-red relative transform md:-translate-y-4' 
                   : 'border border-charcoal/50'
@@ -139,31 +139,29 @@ const PricingSection: React.FC = () => {
               whileHover={{ y: -10, transition: { duration: 0.2 } }}
             >
               {plan.featured && (
-                <div className="bg-blood-red text-white text-center py-2 font-heading text-sm uppercase tracking-wider">
+                <div className="bg-blood-red text-white text-center py-2 font-heading text-sm uppercase tracking-wider contrast-outline">
                   Most Popular
                 </div>
               )}
               
-              <div className={`p-8 bg-${plan.featured ? 'charcoal' : 'void-black'}`}>
+              <div className={`p-8 bg-${plan.featured ? 'charcoal' : 'void-black'} flex flex-col flex-grow`}>
                 <h3 className="text-2xl font-heading mb-2">{plan.name}</h3>
                 <p className="text-white/70 text-sm mb-6">{plan.description}</p>
-                
                 <div className="mb-6">
                   <span className="text-4xl font-heading">
                     ${isAnnual ? (plan.annual / 12).toFixed(2) : plan.monthly}
                   </span>
                   <span className="text-white/70 ml-2">/month</span>
-                  
                   {isAnnual && (
-                    <div className="text-sm text-blood-red mt-2">
+                    <div className="text-sm text-blood-red mt-2 contrast-outline">
                       Billed annually (${plan.annual})
                     </div>
                   )}
                 </div>
-                
+                <div className="flex-grow" />
                 <a
                   href="#register"
-                  className={`block text-center py-3 px-6 rounded-md transition-all duration-300 font-heading text-sm uppercase tracking-wider ${
+                  className={`block text-center py-3 px-6 rounded-md transition-all duration-300 font-heading text-sm uppercase tracking-wider mt-4 ${
                     plan.featured
                       ? 'bg-blood-red text-white hover:bg-ruby'
                       : 'bg-charcoal/50 text-white hover:bg-charcoal'

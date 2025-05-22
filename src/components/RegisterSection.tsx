@@ -36,10 +36,10 @@ const RegisterSection: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-heading uppercase mb-4">
-              Secure Your <span className="text-blood-red">Pre-Order</span>
+            <h2 className="text-4xl md:text-5xl font-heading uppercase mb-4 contrast-outline">
+              Secure Your <span className="text-blood-red contrast-outline">Pre-Order</span>
             </h2>
-            <p className="text-white/80 max-w-xl mx-auto">
+            <p className="text-white/80 max-w-xl mx-auto contrast-outline">
               Be among the first to experience our premium mystery boxes. 
               Register now to get exclusive early access and special launch pricing.
             </p>
@@ -113,8 +113,8 @@ const RegisterSection: React.FC = () => {
                 <div className="w-16 h-16 bg-blood-red rounded-full flex items-center justify-center mx-auto mb-6">
                   <Check className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-heading mb-4">Registration Successful!</h3>
-                <p className="text-white/80 mb-6">
+                <h3 className="text-2xl font-heading mb-4 contrast-outline">Registration Successful!</h3>
+                <p className="text-white/80 mb-6 contrast-outline">
                   Thank you for your interest in our premium mystery boxes. 
                   We'll notify you when pre-orders open.
                 </p>
@@ -144,8 +144,8 @@ const RegisterSection: React.FC = () => {
               }
             ].map((stat, index) => (
               <div key={index} className="p-4">
-                <p className="text-3xl md:text-4xl font-heading text-blood-red">{stat.number}</p>
-                <p className="text-white/70">{stat.text}</p>
+                <p className="text-3xl md:text-4xl font-heading text-blood-red contrast-outline">{stat.number}</p>
+                <p className="text-white/70 contrast-outline">{stat.text}</p>
               </div>
             ))}
           </div>
