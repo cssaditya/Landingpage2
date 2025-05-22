@@ -3,73 +3,89 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Monument Extended';
-  src: local('Arial Black'), local('Arial-Black');
-  font-weight: bold;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Sharp Grotesk';
-  src: local('Arial'), local('Helvetica');
-  font-weight: normal;
-  font-display: swap;
-}
-
 :root {
   --color-void-black: #000000;
   --color-charcoal: #333333;
   --color-blood-red: #DC143C;
   --color-ruby: #E0115F;
   --color-white: #FFFFFF;
+  --color-button-hover: #3498db;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   @apply bg-black text-white overflow-x-hidden;
-  font-family: 'Rubik', 'Helvetica', Arial, sans-serif;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400;
 }
 
 @layer base {
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Rubik', 'Helvetica', Arial, sans-serif;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
     @apply tracking-tight leading-tight;
   }
   
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
   }
   
   h2 {
     @apply text-3xl md:text-4xl lg:text-5xl;
+    font-size: clamp(2rem, 4vw, 3.5rem);
   }
   
   h3 {
     @apply text-2xl md:text-3xl;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
   }
   
   p {
-    font-family: 'Rubik', 'Helvetica', Arial, sans-serif;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
     @apply tracking-wide leading-relaxed;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+  }
+
+  button {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 font-heading font-bold 
-           text-white uppercase tracking-wider transition-all duration-300 
-           rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 
-           focus:ring-offset-black focus:ring-red-600;
+    @apply inline-flex items-center justify-center px-6 py-3 
+           text-white uppercase tracking-wider
+           transition-all duration-200 ease-out
+           rounded-md focus:outline-none focus:ring-2 
+           focus:ring-offset-2 focus:ring-offset-black;
+    
+    &:hover {
+      @apply transform scale-110;
+      background-color: var(--color-button-hover);
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    }
+    
+    &:active {
+      @apply transform scale-95;
+      transition-duration: 0.1s;
+    }
   }
   
   .btn-primary {
     @apply bg-gradient-to-r from-red-600 to-red-900 
-           hover:from-red-500 hover:to-red-800
-           shadow-lg hover:shadow-red-600/30;
+           shadow-lg;
+    
+    &:hover {
+      @apply from-[#3498db] to-[#2980b9];
+    }
   }
   
   .section {
@@ -84,68 +100,28 @@ body {
     animation: floating 3s ease-in-out infinite;
   }
 
-  .glow-on-hover {
-    position: relative;
-    z-index: 1;
-  }
-
-  .glow-on-hover::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 0, 0, 0.1);
-    border-radius: inherit;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .glow-on-hover:hover::before {
-    opacity: 1;
+  .spin-me-text {
+    @apply font-medium text-2xl text-blood-red;
+    animation: pulse 1s ease-in-out infinite;
+    transform-origin: center;
   }
 }
 
 @keyframes floating {
-  0% {
-    transform: translateY(0px);
+  0%, 100% {
+    transform: translateY(0);
   }
   50% {
     transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
   }
 }
 
 @keyframes pulse {
   0%, 100% {
-    opacity: 1;
     transform: scale(1);
   }
   50% {
-    opacity: 0.7;
-    transform: scale(0.95);
-  }
-}
-
-@keyframes particle-float {
-  0% {
-    transform: translate(0, 0);
-  }
-  25% {
-    transform: translate(5px, 5px);
-  }
-  50% {
-    transform: translate(10px, 0);
-  }
-  75% {
-    transform: translate(5px, -5px);
-  }
-  100% {
-    transform: translate(0, 0);
+    transform: scale(1.1);
   }
 }
 
@@ -161,17 +137,18 @@ body {
 
 .particle {
   position: absolute;
-  background-color: rgba(255, 0, 0, 0.1);
-  border-radius: 50%;
   pointer-events: none;
-  animation: particle-float 15s infinite linear alternate;
+  animation: particle-float 2s ease-in-out infinite;
+  opacity: 0.5;
 }
 
-.scroll-indicator {
-  animation: pulse 2s infinite;
-}
-
-/* Prevent FOUC (Flash of Unstyled Content) */
-html.js-loading {
-  visibility: hidden;
+@keyframes particle-float {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
 }
